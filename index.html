@@ -832,6 +832,41 @@
             align-items: center;
             gap: 10px;
         }
+        /* Estilo para las etiquetas "Precio regular:", "Tarifa preferencial:" */
+        .pricing-label {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dark); /* Color oscuro por defecto */
+            text-align: right; /* Alinea etiquetas a la derecha si prefieres */
+            flex-basis: 180px; /* Opcional: Ancho fijo para etiquetas, ajusta según necesites */
+            flex-shrink: 0;
+        }
+        
+        /* Estilo para el VALOR del precio regular */
+        .pricing-value-regular {
+            font-size: 20px;
+            font-weight: 700;
+            text-decoration: line-through; /* <<< ESTO APLICA EL TACHADO */
+            color: #aaa;                  /* Color gris para el precio tachado */
+            text-align: left; /* Alinea el valor a la izquierda */
+        }
+        
+        /* Estilo para el VALOR de la tarifa preferencial */
+        .pricing-value-special {
+            font-size: 26px;           /* <<< HACE EL TEXTO MÁS GRANDE */
+            font-weight: 800;
+            color: var(--primary);     /* <<< APLICA EL COLOR AZUL */
+            text-align: left; /* Alinea el valor a la izquierda */
+        }
+        
+        /* Estilo para la nota de las cuotas */
+        .pricing-note {
+            font-size: 16px;
+            margin-top: 8px;           /* Espacio sobre la nota */
+            font-weight: 500;
+            color: var(--primary);     /* Color azul para la nota */
+            text-align: center;
+        }
         .guarantee-icon {
             font-size: 42px;
             color: var(--primary);
