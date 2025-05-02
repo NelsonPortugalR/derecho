@@ -1,0 +1,2161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taller de Inteligencia Artificial Aplicada al Derecho Privado - Nelson Portugal & Joe Navarrete</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #dbeafe;
+            --secondary: #7c3aed;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --gray-light: #e2e8f0;
+            --success: #16a34a;
+            --warning: #eab308;
+            --light-bg: #f1f5f9;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background-color: #fff;
+            font-size: 16px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* Header */
+        header {
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--dark);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 28px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 17px;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Navigation Play Button (Removed - Not needed as per request) */
+
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #20ba5a;
+            color: #FFF;
+            transform: translateY(-5px);
+            box-shadow: 2px 7px 15px rgba(0,0,0,0.15);
+        }
+        
+        .whatsapp-float i {
+            margin-top: 3px;
+        }
+        
+        /* Para dispositivos móviles */
+        @media screen and (max-width: 767px) {
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 25px;
+            }
+        }
+        
+        /* CTA Button Styles */
+        .cta-button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .secondary-button {
+            background-color: white;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .secondary-button:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+        }
+        
+        /* Banner */
+        .banner {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 14px;
+            font-weight: 500;
+            font-size: 16px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 60px 0 80px; /* Reducido de 100px a 60px */
+            background-color: var(--light-bg);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 70% 30%, var(--primary-light), transparent 60%);
+            opacity: 0.4;
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-tag {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-size: 20px;
+            display: inline-block;
+            padding: 6px 16px;
+            background-color: var(--primary-light);
+            border-radius: 30px;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            line-height: 1.2;
+
+        }
+        
+        .hero-subtitle {
+            font-size: 22px;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        
+        /* Key Info Bar */
+        .key-info-container {
+            margin-top: -40px;
+            position: relative;
+            z-index: 10;
+            padding: 0; /* Eliminado el padding lateral */
+        }
+        
+        .key-info {
+            grid-template-columns: repeat(5, 1fr);
+            display: grid;
+            background-color: white;
+            padding: 32px 40px; /* Aumentado el padding lateral para simetría */
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+            gap: 20px; /* Añade espacio entre las columnas */
+        }
+
+        .info-item {
+            text-align: center;
+            padding: 16px;
+            flex: 1;
+            min-width: 0; /* Añade esta línea */
+            position: relative;
+        }
+        
+        .info-item:not(:last-child):after {
+            content: "";
+            position: absolute;
+            right: -10px; /* Adjusted to be between items with gap */
+            top: 25%;
+            height: 50%;
+            width: 1px;
+            background-color: var(--gray-light);
+        }
+        
+        .info-item-title {
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--gray);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .info-item-value {
+            font-weight: 700;
+            font-size: 18px;
+            word-break: break-word; /* Changed back from break-all */
+        }
+
+        .price-value {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .regular-price {
+            text-decoration: line-through;
+            color: var(--gray);
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+        
+        .discount-price {
+            color: var(--success);
+            font-weight: 700;
+            font-size: 22px;
+        }
+        
+        /* Credibility */
+        .credibility {
+            padding: 50px 0 80px;
+            text-align: center;
+            background-color: white;
+        }
+        
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        
+        .section-subtitle {
+            font-size: 20px;
+            color: var(--gray);
+            margin-bottom: 50px;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .credibility-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+        
+        .credibility-stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 52px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 12px;
+            line-height: 1;
+        }
+        
+        .stat-label {
+            font-weight: 500;
+            color: var(--dark);
+            font-size: 18px;
+        }
+
+        /* Companies Logos Section - Removed as requested */
+
+        .organizer-box {
+            background-color: var(--light-bg);
+            padding: 24px;
+            border-radius: 12px;
+            margin: 50px auto 0;
+            max-width: 800px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .organizer-box p {
+            font-size: 20px;
+            font-weight: 500;
+        }
+        
+        .organizer-box strong {
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        /* Curriculum */
+        .curriculum {
+            padding: 100px 0 80px;
+            background-color: var(--light-bg);
+        }
+        
+        .tabs-container {
+            max-width: 800px;
+            margin: 50px auto 0;
+        }
+        
+        .tabs-navigation {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tab-button {
+            padding: 14px 24px;
+            background-color: transparent;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            color: var(--dark);
+            transition: all 0.3s;
+            border: 2px solid var(--gray-light);
+        }
+        
+        .tab-button.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .tab-button:hover:not(.active) {
+            background-color: var(--gray-light);
+        }
+        
+        .tabs-content .tab-pane {
+            display: none;
+        }
+        
+        .tabs-content .tab-pane.active {
+            display: block;
+        }
+        
+        .session-card {
+            background-color: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+            padding: 40px;
+        }
+        
+        .session-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .session-icon {
+            font-size: 28px;
+            color: var(--primary);
+            margin-right: 16px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .session-title-wrapper {
+            display: flex;
+            align-items: center;
+        }
+        
+        .session-title {
+            font-size: 28px;
+            font-weight: 700;
+        }
+        
+        .session-date {
+            font-weight: 500;
+            color: var(--dark);
+            padding: 8px 16px;
+            background-color: var(--gray-light);
+            border-radius: 30px;
+            font-size: 15px;
+        }
+        
+        .session-subtitle {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--gray);
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+        
+        .session-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .content-section h4 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--dark);
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-light);
+        }
+        
+        .content-list {
+            list-style-type: none;
+        }
+        
+        .content-list li {
+            margin-bottom: 16px;
+            position: relative;
+            padding-left: 32px;
+            font-size: 16px;
+        }
+        
+        .content-list li:before {
+            content: "•";
+            color: var(--primary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 28px;
+            top: -8px;
+        }
+        
+        /* Tools Section - Removed as requested */
+
+        /* Target Audience */
+        .audience {
+            padding: 100px 0 80px;
+            background-color: var(--light-bg);
+        }
+        
+        .audience-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .audience-card {
+            background-color: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        
+        .audience-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .audience-icon { /* Reusing audience-icon style from benefits */
+            width: 90px;
+            height: 90px;
+            background-color: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .audience-icon i { /* Reusing audience-icon style from benefits */
+            font-size: 42px;
+            color: var(--primary);
+        }
+
+        .audience-card i { /* Reusing audience-icon style from benefits */
+            background-color: transparent;
+            width: auto;
+            height: auto;
+            display: inline;
+            margin-bottom: 0;
+        }
+        
+        .audience-card h3 {
+            font-size: 22px;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        
+        .audience-card p {
+            color: var(--gray);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 0 50px;
+        }
+        
+        .testimonials-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 50px auto 0;
+            display: flex; /* Center the single testimonial */
+            justify-content: center; /* Center the single testimonial */
+        }
+        
+        .testimonials-grid { /* Adjusted for single testimonial */
+           max-width: 400px; /* Limit width for single card */
+        }
+        
+        .testimonial-card {
+            background-color: var(--light-bg);
+            border-radius: 16px;
+            padding: 30px;
+            position: relative;
+            transition: all 0.3s;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+            background-color: white;
+        }
+        
+        .testimonial-content {
+            font-style: italic;
+            color: var(--dark);
+            margin-bottom: 20px;
+            font-size: 16px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+        
+        .testimonial-role {
+            color: var(--gray);
+            font-size: 15px;
+        }
+        
+        .quote-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: var(--primary);
+            opacity: 0.15;
+            font-size: 54px;
+        }
+
+        /* Removed testimonials pagination, groups, nav */
+
+        /* Benefits */
+        .benefits {
+            padding: 80px 0 80px; /* Reducido padding-top de 100px a 80px */
+            background-color: var(--light-bg);
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .benefit-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background-color: white;
+            border-radius: 16px;
+            padding: 40px 30px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .benefit-icon {
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 24px;
+            background-color: var(--primary-light);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .benefit-title {
+            font-weight: 700;
+            margin-bottom: 16px;
+            font-size: 20px;
+        }
+        
+        .benefit-description {
+            color: var(--gray);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        /* Pricing */
+        .pricing-section {
+            padding: 40px 0 80px; /* Aumentado padding-bottom de 40px a 80px */
+            text-align: center;
+        }
+        
+        .pricing-table {
+            max-width: 800px;
+            margin: 50px auto 0;
+            background-color: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+        }
+        
+        .pricing-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .pricing-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        
+        .pricing-price {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        
+        .pricing-old-price {
+            font-size: 20px;
+            text-decoration: line-through;
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .pricing-current-price {
+            font-size: 46px;
+            font-weight: 800;
+        }
+        
+        .pricing-features {
+            padding: 40px;
+        }
+        
+        .pricing-features-list {
+            list-style-type: none;
+            text-align: left;
+            margin-bottom: 40px;
+        }
+        
+        .pricing-feature {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            font-size: 17px;
+            gap: 16px; /* Added gap for alignment */
+        }
+        
+        .pricing-feature i {
+            color: var(--success);
+            margin-right: 0; /* Removed margin-right */
+            font-size: 20px;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+        
+        .pricing-button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .pricing-button:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        
+        .pricing-guarantee {
+            margin-top: 40px;
+            background-color: var(--light-bg);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .pricing-guarantee h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--dark);
+        }
+        
+        .pricing-guarantee p {
+            font-size: 17px;
+            line-height: 1.6;
+        }
+        
+        .guarantee-icon {
+            font-size: 42px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        /* Instructor */
+        .instructor {
+            padding: 100px 0 80px;
+        }
+        
+        .instructor-content {
+            display: grid; /* Changed to grid */
+            grid-template-columns: 1fr 1fr; /* Two equal columns */
+            gap: 60px;
+            align-items: flex-start; /* Align items to the top */
+            margin-top: 50px;
+        }
+        
+        .instructor-image-container {
+           /* flex: 1; - Removed */
+            min-width: 200px; /* Adjusted min-width */
+            max-width: 400px;
+            margin: 0 auto; /* Center image within its column */
+        }
+        
+        .instructor-image {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+        
+        .instructor-image:hover {
+            transform: scale(1.02);
+        }
+        
+        .instructor-info {
+           /* flex: 2; - Removed */
+           /* min-width: 300px; - Removed */
+           /* Added margin-bottom for spacing between instructors */
+           margin-bottom: 40px;
+        }
+
+        .instructor-info:last-child {
+             margin-bottom: 0; /* Remove margin for the last instructor */
+        }
+
+        .instructor-info h3 {
+            font-size: 28px; /* Adjusted size */
+            font-weight: 700;
+            margin-bottom: 12px; /* Adjusted margin */
+            color: var(--dark);
+        }
+        
+        .instructor-info h4 {
+            font-size: 20px;
+            font-weight: 500;
+            color: var(--gray);
+            margin-bottom: 20px; /* Adjusted margin */
+            line-height: 1.4;
+        }
+        
+        .instructor-info p {
+            margin-bottom: 20px; /* Adjusted margin */
+            font-size: 16px; /* Adjusted size */
+            line-height: 1.7;
+        }
+        
+        .instructor-info ul {
+            list-style-type: none;
+            padding-left: 0; /* Removed default padding */
+        }
+        
+        .instructor-info li {
+            margin-bottom: 12px; /* Adjusted margin */
+            position: relative;
+            padding-left: 28px; /* Adjusted padding */
+            font-size: 15px; /* Adjusted size */
+        }
+        
+        .instructor-info li:before {
+            content: "✓";
+            color: var(--success);
+            position: absolute;
+            left: 0;
+            font-size: 16px; /* Adjusted size */
+        }
+        
+        /* CTA */
+        .cta {
+            padding: 100px 0 80px;
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            z-index: 0;
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta h2 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 24px;
+        }
+        
+        .cta p {
+            max-width: 800px;
+            margin: 0 auto 24px;
+            font-size: 18px;
+            line-height: 1.7;
+        }
+        
+        .cta-white-button {
+            background-color: white;
+            color: var(--primary);
+            border: none;
+            padding: 16px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 18px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 16px;
+        }
+        
+        .cta-white-button:hover {
+            background-color: var(--light);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+        
+        /* FAQ */
+        .faq {
+            padding: 100px 0 80px;
+        }
+        
+        .faq-accordion {
+            max-width: 800px;
+            margin: 50px auto 0;
+        }
+        
+        .faq-category {
+            margin-bottom: 40px;
+        }
+        
+        .faq-category-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--primary);
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--primary-light);
+        }
+        
+        .faq-question {
+            background-color: var(--light-bg);
+            border-radius: 12px;
+            padding: 24px 32px;
+            margin-bottom: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .faq-question h4 {
+            font-size: 18px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-question h4 i {
+            transition: transform 0.3s;
+        }
+        
+        .faq-answer {
+            padding: 20px 0 0;
+            color: var(--gray);
+            display: none;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        .faq-answer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .faq-answer a:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-question.active {
+            background-color: white;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+        }
+        
+        .faq-question.active h4 i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-question.active .faq-answer {
+            display: block;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 80px 0 40px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+        
+        .footer-col {
+            flex: 1;
+            min-width: 240px;
+        }
+        
+        .footer-col h4 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+        
+        .footer-col h4:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+        
+        .footer-col ul {
+            list-style-type: none;
+            padding-left: 0; /* Remove default padding */
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 16px;
+        }
+        
+        .footer-col ul li a {
+            color: var(--light);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 16px;
+        }
+        
+        .footer-col ul li a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 16px;
+        }
+        
+        .social-link {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.3); /* Semi-transparent white */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            font-size: 18px;
+            color: white !important; /* Force white icon color */
+            text-decoration: none; /* Ensure no underline */
+        }
+        
+        .social-link:hover {
+            background-color: rgba(255,255,255,0.5); /* Lighter on hover */
+            transform: translateY(-3px);
+        }
+
+        .social-link i {
+             color: white !important; /* Force white icon color */
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: var(--light);
+            font-size: 15px;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .hero h1 {
+                font-size: 40px;
+            }
+            
+            .session-content {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .instructor-content {
+                 grid-template-columns: 1fr; /* Stack instructors on smaller screens */
+                 text-align: center;
+            }
+
+             .instructor-info {
+                 text-align: center; /* Center text for stacked instructors */
+             }
+
+             .instructor-info li {
+                 text-align: left; /* Keep list items left-aligned */
+                 display: inline-block; /* Adjust list display if needed */
+                 width: 100%; /* Ensure list items take full width */
+             }
+
+            .key-info {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+             .section-title {
+                 font-size: 28px;
+             }
+            
+             .nav-links {
+                 display: none;
+             }
+            
+             .hero h1 {
+                 font-size: 32px;
+             }
+            
+             .hero-subtitle {
+                 font-size: 18px;
+             }
+            
+             .stat-number {
+                 font-size: 40px;
+             }
+            
+             .info-item:not(:last-child):after {
+                 display: none;
+             }
+            
+             .key-info {
+                 grid-template-columns: repeat(2, 1fr); /* Adjusted from flex-direction column */
+                 gap: 16px;
+                 padding: 24px;
+             }
+            
+             .hero-buttons {
+                 flex-direction: column;
+                 gap: 16px;
+             }
+            
+             .credibility-stats {
+                 gap: 30px;
+             }
+            
+             .session-header {
+                 flex-direction: column;
+                 align-items: flex-start;
+             }
+            
+             .session-card {
+                 padding: 24px;
+             }
+            
+             .session-date {
+                 margin-top: 10px;
+             }
+            
+             .session-subtitle {
+                 font-size: 18px;
+             }
+            
+             .pricing-table {
+                 margin: 40px 16px 0;
+             }
+             .instructor-content {
+                gap: 30px; /* Reduce gap for smaller screens */
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 16px;
+            }
+            
+            .section-title {
+                font-size: 26px;
+            }
+            
+            .section-subtitle {
+                font-size: 18px;
+            }
+            
+            .hero {
+                padding: 80px 0 60px;
+            }
+            
+            .hero-tag {
+                font-size: 16px;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+
+            }
+            
+            .hero-subtitle {
+                font-size: 16px;
+            }
+            
+            .credibility-stats {
+                gap: 20px;
+            }
+            
+            .stat-number {
+                font-size: 34px;
+            }
+            
+            .stat-label {
+                font-size: 16px;
+            }
+            
+            .tab-button {
+                padding: 10px 16px;
+                font-size: 14px;
+            }
+            
+            .session-title {
+                font-size: 22px;
+            }
+            
+            .session-subtitle {
+                font-size: 16px;
+            }
+            
+            .content-section h4 {
+                font-size: 18px;
+            }
+            
+            .content-list li {
+                font-size: 15px;
+            }
+            
+            .instructor-info h3 {
+                font-size: 26px;
+            }
+            
+            .instructor-info h4 {
+                font-size: 18px;
+            }
+            
+            .cta h2 {
+                font-size: 28px;
+            }
+            
+            .cta p {
+                font-size: 16px;
+            }
+            
+            .cta-white-button {
+                padding: 14px 28px;
+                font-size: 16px;
+            }
+            .key-info {
+                grid-template-columns: 1fr; /* Stack items vertically */
+            }
+            .info-item:not(:last-child):after {
+                 display: none; /* Hide dividers when stacked */
+             }
+        }
+        
+        /* Mobile menu */
+        .mobile-menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--dark);
+            background: transparent;
+            border: none;
+            padding: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 74px; /* Adjusted top position */
+                left: 0;
+                right: 0;
+                background-color: white;
+                box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+                padding: 24px;
+                z-index: 99; /* Lower z-index than header */
+                animation: slideDown 0.3s ease;
+            }
+            
+            .nav-links.active a {
+                padding: 16px 0;
+                border-bottom: 1px solid var(--gray-light);
+            }
+            
+            .nav-links.active a:last-child {
+                border-bottom: none;
+            }
+            
+            @keyframes slideDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(-10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        }
+        
+        /* Removed Audio Testimonials Styling */
+         .professions-banner {
+             margin: 25px auto 30px;
+             max-width: 900px;
+             background-color: var(--primary-light);
+             padding: 15px 20px;
+             border-radius: 10px;
+         }
+         .professions-banner p {
+             font-size: 17px;
+             line-height: 1.5;
+             margin: 0;
+         }
+         .profession {
+             font-weight: 600;
+             color: var(--primary);
+         }
+         .no-experience {
+             background-color: var(--primary-light);
+             color: var(--primary);
+             font-weight: 700;
+             padding: 3px 12px;
+             border-radius: 20px;
+             font-size: 1.05em;
+             display: inline-block;
+             margin-top: 8px;
+         }
+    </style>
+</head>
+<body id="top">
+    <header>
+        <div class="container">
+            <nav class="navbar">
+            <a href="#top" class="logo"><img src="http://nelsonportugal.com/wp-content/uploads/2016/06/logo.png" alt="Nelson Portugal" height="50"></a>
+                <div class="nav-links">
+                    <a href="#curriculum">Temario</a>
+                    <a href="#instructor">Consultores</a>
+                    <a href="#testimonials">Testimonios</a>
+                    <a href="#faq">Preguntas</a>
+                </div>
+                <button class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <a href="#pricing" class="cta-button">Inscribirme</a>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-tag">100% práctico | ¡No te Quedes Atrás!</div>
+                <h1>Taller de Inteligencia Artificial Aplicada al Derecho Privado</h1>
+                <p class="hero-subtitle">Domina la Inteligencia Artificial y Avanza en tu Carrera Jurídica. Transforma tu Práctica Legal con Herramientas que Redefinen el Derecho Privado. Revoluciona la manera en que generas contratos, informes y comunicaciones legales. <span class="no-experience">¡Sin conocimientos previos!</span> </p>
+
+                <div class="professions-banner">
+                     <p>Este taller está diseñado específicamente para <span class="profession">abogados visionarios</span> que buscan optimizar su práctica profesional, reducir tiempos operativos y destacar en un mercado competitivo.</p>
+                 </div>
+
+                <div class="hero-buttons">
+                    <a href="#pricing" class="cta-button">Reservar tu lugar ahora</a>
+                    <a href="#curriculum" class="secondary-button">Conocer los detalles</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div class="key-info-container">
+        <div class="key-info">
+            <div class="info-item">
+                <div class="info-item-title">INICIO</div>
+                <div class="info-item-value">Martes 20 de mayo</div>
+            </div>
+            
+            <div class="info-item">
+                <div class="info-item-title">DURACIÓN</div>
+                <div class="info-item-value">4 semanas</div>
+            </div>
+            
+            <div class="info-item">
+                <div class="info-item-title">FORMATO</div>
+                <div class="info-item-value">4 sesiones en vivo vía Zoom (Mar 7pm-9pm)</div>
+            </div>
+            
+            <div class="info-item">
+                <div class="info-item-title">PRECIO REGULAR</div>
+                <div class="info-item-value"><strong>S/ 750</strong> <span style="font-size: 12px; color: var(--gray);">+IGV</span></div> 
+            </div>
+            
+            <div class="info-item">
+                <div class="info-item-title">TARIFA PREFERENCIAL</div>
+                <div class="info-item-value" style="color: var(--success); font-weight: 700; font-size: 18px;">S/ 450 <span style="font-size: 12px; color: var(--gray);">+IGV</span></div> 
+            </div>
+        </div>
+    </div>
+    
+    <section class="credibility">
+        <div class="container">
+             <div class="credibility-stats">
+                <div class="credibility-stat">
+                    <div class="stat-number">9.5/10</div>
+                    <div class="stat-label">Nivel de satisfacción (Talleres IA anteriores)</div>
+                </div>
+
+                 <div class="credibility-stat">
+                     <div class="stat-number">+10</div>
+                     <div class="stat-label">Años de experiencia (Consultoría)</div>
+                 </div>
+
+                  <div class="credibility-stat">
+                    <div class="stat-number">+20</div>
+                    <div class="stat-label">Años de experiencia (Legal)</div> 
+                </div>
+            </div>
+
+             <div class="organizer-box">
+                <p>Organizado por <strong>Portugal Research International</strong>, consultora con más de una década de trayectoria en el país.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="curriculum" class="curriculum">
+        <div class="container">
+            <h2 class="section-title">Temario</h2>
+            <p class="section-subtitle">Maximiza el uso de la inteligencia artificial en tu práctica jurídica</p>
+            
+            <div class="tabs-container">
+                <div class="tabs-navigation">
+                    <button class="tab-button active" data-tab="session1">Semana 1</button>
+                    <button class="tab-button" data-tab="session2">Semana 2</button>
+                    <button class="tab-button" data-tab="session3">Semana 3</button>
+                    <button class="tab-button" data-tab="session4">Semana 4</button>
+                </div>
+                
+                <div class="tabs-content">
+                    <div class="tab-pane active" id="session1">
+                        <div class="session-card">
+                            <div class="session-header">
+                                <div class="session-title-wrapper">
+                                    <div class="session-icon">
+                                        <i class="fas fa-balance-scale"></i>
+                                    </div>
+                                    <div class="session-title">Fundamentos IA y Prompts</div>
+                                </div>
+                                <div class="session-date">Martes 20 de mayo | 7:00pm a 9:00pm</div>
+                            </div>
+                            
+                            <div class="session-subtitle">Fundamentos de la IA Jurídica y la Ingeniería de Prompts</div>
+                            
+                            <div class="session-content">
+                                <div class="content-section">
+                                    <h4>Contenido:</h4>
+                                    <ul class="content-list">
+                                        <li>Introducción: Modelos de lenguaje (ChatGPT, DeepSeek, Claude, Gemini) y aplicaciones en derecho privado.</li>
+                                        <li>Fundamentos de Ingeniería de Prompts: Principios, tipos (directos, condicionales, en cadena).</li>
+                                        <li>Práctica guiada: Creación de primeros prompts jurídicos.</li>
+                                    </ul>
+                                </div>
+                                <div class="content-section">
+                                    <h4>Objetivo:</h4>
+                                    <ul class="content-list">
+                                        <li>Comprender qué son los modelos de lenguaje y su potencial en el ámbito legal.</li>
+                                        <li>Aprender los principios básicos para dar instrucciones efectivas a la IA.</li>
+                                        <li>Empezar a crear prompts para tareas jurídicas simples.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-pane" id="session2">
+                        <div class="session-card">
+                            <div class="session-header">
+                                <div class="session-title-wrapper">
+                                    <div class="session-icon">
+                                        <i class="fas fa-file-signature"></i>
+                                    </div>
+                                    <div class="session-title">Redacción Jurídica con IA</div>
+                                </div>
+                                <div class="session-date">Martes 27 de mayo | 7:00pm a 9:00pm</div>
+                            </div>
+                            
+                            <div class="session-subtitle">Redacción Jurídica Asistida por IA</div>
+                            
+                            <div class="session-content">
+                                <div class="content-section">
+                                    <h4>Contenido:</h4>
+                                    <ul class="content-list">
+                                        <li>Elaboración de Documentos Jurídicos: Cartas, contratos, correos, propuestas, transcripciones, traducciones, presentaciones.</li>
+                                        <li>Plantillas Inteligentes y Reutilizables: Creación de prompts modulares.</li>
+                                        <li>Construcción de biblioteca de plantillas legales.</li>
+                                    </ul>
+                                </div>
+                                <div class="content-section">
+                                    <h4>Casos prácticos:</h4>
+                                    <ul class="content-list">
+                                         <li>Contratos civiles.</li>
+                                         <li>Correos a clientes.</li>
+                                         <li>Cláusulas societarias.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-pane" id="session3">
+                        <div class="session-card">
+                            <div class="session-header">
+                                <div class="session-title-wrapper">
+                                    <div class="session-icon">
+                                        <i class="fas fa-search-dollar"></i>
+                                    </div>
+                                    <div class="session-title">Revisión e Investigación</div>
+                                </div>
+                                <div class="session-date">Martes 3 de junio | 7:00pm a 9:00pm</div>
+                            </div>
+                            
+                            <div class="session-subtitle">Revisión, Informes e Investigación Jurídica Asistida</div>
+                            
+                            <div class="session-content">
+                                <div class="content-section">
+                                    <h4>Contenido:</h4>
+                                    <ul class="content-list">
+                                        <li>Elaboración y Revisión de Informes Jurídicos: Borradores, revisión crítica, corrección, ajustes de estilo, control de calidad.</li>
+                                        <li>Investigación Jurídica Asistida: Pedir análisis, definiciones, resúmenes; evaluar confiabilidad; citado; integración con fuentes tradicionales.</li>
+                                    </ul>
+                                </div>
+                                <div class="content-section">
+                                     <h4>Objetivo:</h4>
+                                     <ul class="content-list">
+                                         <li>Utilizar IA para generar y refinar informes legales complejos.</li>
+                                         <li>Aprovechar IA para acelerar y complementar la investigación jurídica.</li>
+                                         <li>Evaluar críticamente la información generada por IA.</li>
+                                     </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-pane" id="session4">
+                        <div class="session-card">
+                            <div class="session-header">
+                                <div class="session-title-wrapper">
+                                    <div class="session-icon">
+                                        <i class="fas fa-gavel"></i>
+                                    </div>
+                                    <div class="session-title">Plantillas Avanzadas y Ética</div>
+                                </div>
+                                <div class="session-date">Martes 10 de junio | 7:00pm a 9:00pm</div>
+                            </div>
+                            
+                            <div class="session-subtitle">Automatización, Plantillas Avanzadas y Ética en la IA Jurídica</div>
+                            
+                            <div class="session-content">
+                                <div class="content-section">
+                                    <h4>Contenido:</h4>
+                                    <ul class="content-list">
+                                        <li>Acceso a Plantillas Predefinidas: Entrega y personalización para áreas (civil, societario, inmobiliario).</li>
+                                        <li>Aspectos Éticos y Limitaciones: Sesgos, errores, confiabilidad, confidencialidad, responsabilidad profesional.</li>
+                                        <li>Marco legal en Perú y tendencias internacionales.</li>
+                                    </ul>
+                                </div>
+                                <div class="content-section">
+                                     <h4>Objetivo:</h4>
+                                     <ul class="content-list">
+                                         <li>Utilizar plantillas avanzadas para tareas legales específicas.</li>
+                                         <li>Comprender las implicaciones éticas y las limitaciones de la IA en el derecho.</li>
+                                         <li>Conocer el panorama regulatorio actual y futuro.</li>
+                                     </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 40px;">
+                    <p style="font-weight: 600; font-size: 22px; color: var(--primary);">¡Todo esto sin necesitar conocimientos previos!</p> 
+                </div>
+            </div>
+        </div>
+    </section>
+    
+     <section id="audience" class="audience">
+        <div class="container">
+            <h2 class="section-title">Quiénes se benefician de este taller</h2>
+            
+            <div class="audience-cards">
+                <div class="audience-card">
+                    <div class="audience-icon">
+                         <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Abogados de Derecho Privado</h3>
+                    <p>Que buscan optimizar su práctica profesional, reducir tiempos operativos y destacar en un mercado competitivo integrando IA.</p>
+                </div>
+                
+                <div class="audience-card">
+                     <div class="audience-icon">
+                         <i class="fas fa-file-contract"></i>
+                     </div>
+                    <h3>Profesionales Legales</h3>
+                    <p>Que desean redactar y revisar contratos, generar informes y automatizar comunicaciones legales de manera más rápida y eficiente con IA.</p>
+                </div>
+                
+                <div class="audience-card">
+                    <div class="audience-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Visionarios Tecnológicos del Sector Legal</h3>
+                    <p>Que quieren estar a la vanguardia, aprendiendo a usar modelos de lenguaje avanzados y plantillas para revolucionar su trabajo diario.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Lo que dicen nuestros participantes</h2>
+            
+            <div class="testimonials-container">
+                 <div class="testimonials-grid"> <div class="testimonial-card">
+                         <i class="fas fa-quote-right quote-icon"></i>
+                         <p class="testimonial-content">Ha sido una clase muy enriquecedora que nos ha mostrado cómo podemos hacer las cosas de manera más rápida y eficiente. Las herramientas son realmente útiles.</p>
+                         <div class="testimonial-author">Fiorella Gallo</div>
+                         <div class="testimonial-role">Abogada y Empresaria</div>
+                     </div>
+                 </div>
+            </div>
+            </div>
+    </section>
+    
+    <section id="pricing" class="pricing-section">
+        <div class="container">
+            <div class="pricing-table">
+                <div class="pricing-header">
+                    <div class="pricing-title">Taller de Inteligencia Artificial Aplicada al Derecho Privado</div> 
+                    <div class="pricing-subtitle">Inscríbete ahora y recibe:</div>
+                </div>
+                
+                <div class="pricing-features">
+                    <ul class="pricing-features-list">
+                        <li class="pricing-feature">
+                            <i class="fas fa-certificate"></i>
+                            <div>
+                                <strong>Certificado/constancia de participación</strong> al finalizar el taller.
+                            </div>
+                        </li>
+                        <li class="pricing-feature">
+                            <i class="fas fa-video"></i>
+                            <div>
+                                <strong>4 sesiones interactivas</strong> vía Zoom de 2 horas cada una 100% prácticas.
+                            </div>
+                        </li>
+                        <li class="pricing-feature">
+                            <i class="fas fa-folder-open"></i>
+                            <div>
+                                <strong>Acceso a las grabaciones y recursos adicionales</strong>.
+                            </div>
+                        </li>
+                        <li class="pricing-feature">
+                             <i class="fas fa-file-code"></i>
+                             <div>
+                                <strong>Plantillas listas para utilizar</strong> en contratos, informes y comunicaciones.
+                             </div>
+                         </li>
+                         <li class="pricing-feature">
+                              <i class="fas fa-headset"></i>
+                              <div>
+                                 <strong>Soporte personalizado:</strong> Durante todo el taller, cualquier duda que tengas recibirás guía y soporte.
+                              </div>
+                          </li>
+                    </ul>
+                    
+                     <div class="pricing-info">
+                          <div class="pricing-info-item">
+                              <span class="pricing-label">Precio regular:</span>
+                              <span class="pricing-value-regular">S/ 750</span> <span style="font-size: 12px; color: var(--gray);">+ IGV</span>
+                          </div>
+                          <div class="pricing-info-item">
+                              <span class="pricing-label">Tarifa preferencial:</span>
+                              <span class="pricing-value-special">S/ 450</span> <span style="font-size: 12px; color: var(--gray);">+ IGV</span> 
+                          </div>
+                          </div>
+                    
+                    <a href="https://wa.link/9aguaa" target="_blank" class="pricing-button">¡Inscríbete ahora!</a>
+                </div>
+            </div>
+            
+            <div class="pricing-guarantee">
+                 <div class="guarantee-icon">
+                      <i class="fas fa-shield-alt"></i>
+                 </div>
+                <h3>Nuestra Garantía – Tu Aprendizaje Asegurado</h3>
+                <p>Este taller ha sido diseñado combinando décadas de experiencia especializada en el derecho privado y las mejores prácticas del uso de la inteligencia artificial. Al finalizar, estarás equipado para enfrentar los retos del derecho privado con una ventaja competitiva única.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="benefits">
+        <div class="container">
+            <h2 class="section-title">Beneficios Clave para Abogados del Derecho Privado</h2> 
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <h3 class="benefit-title">Contratos en Segundos</h3>
+                    <p class="benefit-description">Aprende a redactar y revisar contratos en tiempo récord con precisión y seguridad jurídica.</p>
+                </div>
+                
+                <div class="benefit-card">
+                     <div class="benefit-icon">
+                         <i class="fas fa-chart-line"></i>
+                     </div>
+                    <h3 class="benefit-title">Informes Eficientes</h3>
+                    <p class="benefit-description">Genera análisis legales detallados en cuestión de segundos, ahorrando horas de trabajo manual.</p>
+                </div>
+                
+                <div class="benefit-card">
+                     <div class="benefit-icon">
+                         <i class="fas fa-paper-plane"></i>
+                     </div>
+                    <h3 class="benefit-title">Comunicaciones Automatizadas</h3>
+                    <p class="benefit-description">Crea propuestas de servicio, cartas de cobranza y otros documentos legales con rapidez y efectividad.</p>
+                </div>
+
+                 <div class="benefit-card">
+                      <div class="benefit-icon">
+                           <i class="fas fa-cogs"></i>
+                      </div>
+                     <h3 class="benefit-title">Integración Estratégica</h3>
+                     <p class="benefit-description">Integra IA en tu práctica legal, aumentando tu productividad, reduciendo errores y mejorando la experiencia del cliente.</p>
+                 </div>
+
+                 <div class="benefit-card">
+                     <div class="benefit-icon">
+                          <i class="fas fa-lightbulb"></i>
+                     </div>
+                    <h3 class="benefit-title">Ingeniería de Prompts</h3>
+                    <p class="benefit-description">Domina el arte de crear instrucciones claras y efectivas para obtener resultados óptimos y desarrolla plantillas reutilizables.</p>
+                </div>
+
+                 <div class="benefit-card">
+                    <div class="benefit-icon">
+                         <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="benefit-title">Ventaja Competitiva</h3>
+                    <p class="benefit-description">Equípate para enfrentar los retos del derecho privado con una ventaja única en el mercado actual.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="instructor" class="instructor">
+        <div class="container">
+            <h2 class="section-title">Consultores a cargo</h2>
+            
+            <div class="instructor-content">
+                 <div class="instructor-info"> <div class="instructor-image-container">
+                           <img src="https://via.placeholder.com/400x400.png?text=Joe+Navarrete" alt="Joe Navarrete" class="instructor-image">
+                       </div>
+                      <h3>Joe Navarrete</h3> 
+                      <h4>Abogado (UNMSM), Magister en Finanzas y Derecho Corp. (ESAN)</h4> 
+                      <p>Estudios concluidos en Maestría de Filosofía (Ética y Política, UARM).Asociado Senior en Santiváñez Abogados (Actual). Experiencia previa como Gerente Legal y Asociado Senior en firmas y empresas líderes.</p>
+                      <ul>
+                          <li>Ha sido profesor en UNMSM, PUCP (Segunda Especialidad y Escuela de Derecho), USIL (Maestría y Posgrado) y UCSP.</li>
+                          <li>Cursos dictados incluyen Fusiones y Adquisiciones, Mercado de Valores, Contratos Empresariales, Compliance, Dinámica Societaria, Banca y Nuevas Tecnologías.</li>
+                      </ul>
+                  </div>
+
+                <div class="instructor-info"> <div class="instructor-image-container">
+                          <img src="http://nelsonportugal.com/wp-content/uploads/2020/12/descarga.png" alt="Nelson Portugal" class="instructor-image">
+                      </div>
+                    <h3>Nelson Portugal</h3> 
+                    <h4>Consultor, Autor, Especialista en Programas Formativos</h4> 
+                    <p>Consultor en desarrollo personal, autor del libro "El Círculo de Crecimiento" y especialista en diseño de programas formativos para líderes empresariales.</p>
+                    <ul>
+                        <li>Ha asesorado a profesionales de empresas como Cosapi, Minsur, Huawei, Entel, Colliers, PetroPerú, Marina de Guerra, entre otras.</li>
+                        <li>Experiencia integrando herramientas no code en áreas comerciales y de marketing.</li>
+                        <li>Ha dictado talleres de IA para sectores de salud, educación y seguros.</li>
+                        <li>Administrador (UPC), capacitador en diversas empresas.</li>
+                        <li>Profesor invitado en Centrum PUCP y profesor universitario en U. Continental.</li>
+                        <li>Programa especializado en Liderazgo de Firmas de Servicios Profesionales en Harvard Business School.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>¡No te Quedes Atrás! Avanza en tu Carrera Jurídica</h2>
+                <p>En un mundo donde la tecnología avanza a pasos agigantados, el sector legal no puede quedarse rezagado. Este taller te brindará las herramientas para integrar modelos de lenguaje avanzados en tu día a día.</p>
+                <p>Únete al "Taller de Inteligencia Artificial Aplicada al Derecho Privado" y lleva tu carrera al siguiente nivel. No pierdas la oportunidad de convertirte en un abogado del futuro, hoy mismo.</p> 
+                <a href="#pricing" class="cta-white-button">¡Inscríbete ahora y Transforma tu Práctica Legal!</a> 
+            </div>
+        </div>
+    </section>
+    
+    <section id="faq" class="faq">
+        <div class="container">
+            <h2 class="section-title">Preguntas Frecuentes</h2>
+            
+            <div class="faq-accordion">
+                <div class="faq-category">
+                    <h3 class="faq-category-title" style="text-align: center;">Inscripción y Pagos</h3>
+                    
+                    <div class="faq-question">
+                        <h4>¿Cómo me inscribo al taller? <i class="fas fa-chevron-down"></i></h4>
+                        <div class="faq-answer">
+                            <p>Puedes inscribirte fácilmente haciendo clic <a href="https://wa.link/9aguaa" target="_blank"><strong>aquí para WhatsApp</strong></a> o escribirnos a <strong>nportugal@trasciende.la</strong> para coordinar tu inscripción.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-question">
+                        <h4>¿Cuáles son las formas de pago disponibles? <i class="fas fa-chevron-down"></i></h4>
+                        <div class="faq-answer">
+                            <p>Tienes varias opciones: Yape, Plin, transferencia bancaria o tarjeta de crédito, según lo que te resulte más cómodo. Para completar tu inscripción y seleccionar tu método de pago <a href="https://wa.link/9aguaa" target="_blank"><strong>haz clic aquí</strong></a>.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-question">
+                        <h4>¿Emiten factura? <i class="fas fa-chevron-down"></i></h4>
+                        <div class="faq-answer">
+                            <p>Por supuesto. Solo necesitas enviarnos el RUC. La inscripción se realiza a nombre de <strong>Portugal Research International SAC</strong> (RUC 20600022653). Usa la cuenta BCP: <strong>193-2225743-0-51</strong>. Si transfieres desde otro banco, el CCI es: <strong>00219300222574305116</strong>.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-question">
+                         <h4>¿Cuál es el costo del taller? <i class="fas fa-chevron-down"></i></h4>
+                         <div class="faq-answer">
+                              <p>El precio regular es <strong>S/ 750 + IGV</strong>. Accede a la tarifa preferencial de <strong>S/ 450 + IGV</strong> inscribiéndote pronto.</p>
+                         </div>
+                     </div>
+                </div>
+                
+                <div class="faq-category">
+                    <h3 class="faq-category-title" style="text-align: center;">Información del Taller</h3>
+                    
+                    <div class="faq-question">
+                        <h4>¿Las clases son en vivo? <i class="fas fa-chevron-down"></i></h4>
+                        <div class="faq-answer">
+                             <p>Sí, todas las sesiones son en vivo vía Zoom, los martes de 7:00 p.m. a 9:00 p.m. (hora Perú), comenzando el 20 de mayo. Tendrás acceso a las grabaciones y recursos adicionales.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-question">
+                        <h4>¿Hay grabaciones disponibles si no puedo asistir en vivo? <i class="fas fa-chevron-down"></i></h4>
+                        <div class="faq-answer">
+                            <p>Sí, todas las sesiones se graban y estarán disponibles en una plataforma privada. Además, cuentas con soporte personalizado durante el taller.</p>
+                        </div>
+                    </div>
+                    
+                     <div class="faq-question">
+                          <h4>¿Quiénes son los instructores y cuál es su experiencia? <i class="fas fa-chevron-down"></i></h4>
+                          <div class="faq-answer">
+                               <p>El taller es dictado por <strong>Joe Navarrete</strong>, abogado con amplia experiencia en derecho corporativo y M&A, y profesor universitario; y <strong>Nelson Portugal</strong>, consultor con más de 10 años de experiencia capacitando profesionales y especialista en IA aplicada a negocios.</p>
+                          </div>
+                      </div>
+
+                     <div class="faq-question">
+                         <h4>¿Qué tipo de computadora necesito? <i class="fas fa-chevron-down"></i></h4>
+                         <div class="faq-answer">
+                              <p>No necesitas un equipo especial. Las herramientas que usaremos funcionan bien en cualquier computadora o dispositivo estándar que ya tengas.</p>
+                         </div>
+                     </div>
+                </div>
+                
+                <div class="faq-category">
+                    <h3 class="faq-category-title" style="text-align: center;">Contenido y Metodología</h3>
+                    
+                    <div class="faq-question">
+                         <h4>¿Necesito conocimientos previos o saber programar? <i class="fas fa-chevron-down"></i></h4>
+                         <div class="faq-answer">
+                              <p>No, el taller está diseñado para que cualquier profesional del derecho, incluso sin experiencia previa en IA o programación, pueda aprender a implementar soluciones prácticas desde cero.</p>
+                         </div>
+                     </div>
+
+                     <div class="faq-question">
+                         <h4>¿Recibiré una certificación al finalizar? <i class="fas fa-chevron-down"></i></h4>
+                         <div class="faq-answer">
+                              <p>Sí, al completar el taller obtendrás un <strong>certificado/constancia de participación</strong> a nombre de <strong>Portugal Research International SAC</strong>.</p>
+                         </div>
+                     </div>
+
+                     <div class="faq-question">
+                         <h4>¿Qué herramientas específicas de IA aprenderé a usar? <i class="fas fa-chevron-down"></i></h4>
+                         <div class="faq-answer">
+                              <p>Nos enfocaremos en modelos de lenguaje líderes como ChatGPT, DeepSeek, Claude y Gemini, aplicándolos a tareas legales concretas como redacción y revisión de contratos, generación de informes y análisis legales.</p>
+                         </div>
+                     </div>
+
+                     <div class="faq-question">
+                         <h4>¿El contenido es aplicable a mi área específica del derecho privado? <i class="fas fa-chevron-down"></i></h4>
+                         <div class="faq-answer">
+                              <p>Sí, aunque cubriremos principios generales, las técnicas de ingeniería de prompts y el uso de plantillas son adaptables. Se entregarán plantillas personalizables para áreas como civil, societario e inmobiliario, y aprenderás a crear las tuyas.</p>
+                         </div>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li>Email: nportugal@trasciende.la</li>
+                        <li>WhatsApp: +51 994 607 605</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Enlaces rápidos</h4>
+                    <ul>
+                        <li><a href="#curriculum">Temario</a></li>
+                         <li><a href="#instructor">Consultores</a></li>
+                        <li><a href="#testimonials">Testimonios</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#pricing">Inscripción</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                     <h4>Sigue a los Consultores</h4>
+                     <div style="margin-bottom: 15px;">Nelson Portugal:</div>
+                     <div class="social-links" style="margin-bottom: 25px;">
+                          <a href="https://www.linkedin.com/in/nelsonportugal/" target="_blank" class="social-link">
+                              <i class="fab fa-linkedin"></i>
+                          </a>
+                          <a href="https://x.com/Nelson1614" target="_blank" class="social-link">
+                              <i class="fab fa-twitter"></i>
+                          </a>
+                          <a href="https://www.facebook.com/blog.nelsonportugal" target="_blank" class="social-link">
+                              <i class="fab fa-facebook"></i>
+                          </a>
+                          <a href="https://www.instagram.com/nelson1614/" target="_blank" class="social-link">
+                              <i class="fab fa-instagram"></i>
+                          </a>
+                     </div>
+                     <div>Joe Navarrete:</div>
+                      <div class="social-links">
+                          <a href="https://www.linkedin.com/in/joe-antonio-navarrete-lezama-8b747731/" target="_blank" class="social-link">
+                              <i class="fab fa-linkedin"></i>
+                          </a>
+                           </div>
+                </div>
+
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 Portugal Research International SAC. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            // Toggle icon between bars and times (optional)
+             const icon = mobileMenuToggle.querySelector('i');
+             if (navLinks.classList.contains('active')) {
+                 icon.classList.remove('fa-bars');
+                 icon.classList.add('fa-times');
+             } else {
+                 icon.classList.remove('fa-times');
+                 icon.classList.add('fa-bars');
+             }
+        });
+
+         // Close mobile menu when a link is clicked
+         document.querySelectorAll('.nav-links a').forEach(link => {
+             link.addEventListener('click', () => {
+                 if (navLinks.classList.contains('active')) {
+                     navLinks.classList.remove('active');
+                     mobileMenuToggle.querySelector('i').classList.remove('fa-times');
+                     mobileMenuToggle.querySelector('i').classList.add('fa-bars');
+                 }
+             });
+         });
+        
+        // Tab functionality for curriculum section
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabPanes = document.querySelectorAll('.tab-pane');
+        
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and panes
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabPanes.forEach(pane => pane.classList.remove('active'));
+                
+                // Add active class to clicked button and corresponding pane
+                button.classList.add('active');
+                const tabId = button.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        
+        // FAQ accordion
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                 // Close other open questions in the same category (optional)
+                const category = question.closest('.faq-category');
+                if (category) {
+                    category.querySelectorAll('.faq-question.active').forEach(openQuestion => {
+                        if (openQuestion !== question) {
+                           openQuestion.classList.remove('active');
+                        }
+                    });
+                }
+                // Toggle the clicked question
+                question.classList.toggle('active');
+            });
+        });
+        
+        // Testimonials pagination (Removed - not needed)
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                
+                // Si el enlace es solo "#", no hacer nada
+                if (targetId === '#') return;
+                
+                // Si el enlace es "#top", desplazarse al inicio de la página
+                if (targetId === '#top') {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                     // Close mobile menu if open
+                     if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        mobileMenuToggle.querySelector('i').classList.remove('fa-times');
+                        mobileMenuToggle.querySelector('i').classList.add('fa-bars');
+                     }
+                    return;
+                }
+                
+                // Para otros enlaces con "#", desplazarse al elemento correspondiente
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                     const headerOffset = document.querySelector('header').offsetHeight || 80; // Get header height or use default
+                    window.scrollTo({
+                        top: targetElement.offsetTop - headerOffset, // Adjust for sticky header
+                        behavior: 'smooth'
+                    });
+                    // Close mobile menu if open
+                     if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        mobileMenuToggle.querySelector('i').classList.remove('fa-times');
+                        mobileMenuToggle.querySelector('i').classList.add('fa-bars');
+                     }
+                }
+            });
+        });
+
+        // Removed Audio Control Logic
+    </script>
+    <a href="https://wa.link/vhsg0r" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+</body>
+</html>
