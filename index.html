@@ -828,9 +828,13 @@
             gap: 12px;              /* Espacio vertical entre las líneas */
         }
         .pricing-info-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            display: flex;        /* <<< ¡ESTA ES LA CLAVE PARA LA ALINEACIÓN HORIZONTAL! */
+            align-items: center;  /* Centra verticalmente la etiqueta y el precio */
+            justify-content: center; /* Centra horizontalmente el conjunto (opcional, ajusta si prefieres alineado a la izquierda) */
+            gap: 10px;           /* Espacio entre la etiqueta y el precio */
+            width: 100%;
+            max-width: 400px;    /* Ajusta este ancho si es necesario */
+            margin-bottom: 5px; /* Pequeño espacio entre líneas de precio */
         }
         /* Estilo para las etiquetas "Precio regular:", "Tarifa preferencial:" */
         .pricing-label {
