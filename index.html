@@ -84,8 +84,6 @@
             color: var(--primary);
         }
 
-        /* Navigation Play Button (Removed - Not needed as per request) */
-
         .whatsapp-float {
             position: fixed;
             width: 60px;
@@ -117,7 +115,6 @@
             margin-top: 3px;
         }
         
-        /* Para dispositivos móviles */
         @media screen and (max-width: 767px) {
             .whatsapp-float {
                 width: 50px;
@@ -180,7 +177,7 @@
         
         /* Hero Section */
         .hero {
-            padding: 60px 0 80px; /* Reducido de 100px a 60px */
+            padding: 60px 0 80px;
             background-color: var(--light-bg);
             text-align: center;
             position: relative;
@@ -220,7 +217,6 @@
             font-weight: 800;
             margin-bottom: 24px;
             line-height: 1.2;
-
         }
         
         .hero-subtitle {
@@ -237,40 +233,60 @@
             justify-content: center;
             margin-top: 40px;
         }
+
+        /* NEW: Updated badge */
+        .updated-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #7c3aed, #2563eb);
+            color: white;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin-left: 8px;
+            letter-spacing: 0.5px;
+            vertical-align: middle;
+            animation: pulse-badge 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-badge {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.75; }
+        }
         
         /* Key Info Bar */
         .key-info-container {
             margin-top: -40px;
             position: relative;
             z-index: 10;
-            padding: 0; /* Eliminado el padding lateral */
+            padding: 0;
         }
         
         .key-info {
             grid-template-columns: repeat(5, 1fr);
             display: grid;
             background-color: white;
-            padding: 32px 40px; /* Aumentado el padding lateral para simetría */
+            padding: 32px 40px;
             border-radius: 16px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.08);
             max-width: 1000px;
             margin-left: auto;
             margin-right: auto;
-            gap: 20px; /* Añade espacio entre las columnas */
+            gap: 20px;
         }
 
         .info-item {
             text-align: center;
             padding: 16px;
             flex: 1;
-            min-width: 0; /* Añade esta línea */
+            min-width: 0;
             position: relative;
         }
         
         .info-item:not(:last-child):after {
             content: "";
             position: absolute;
-            right: -10px; /* Adjusted to be between items with gap */
+            right: -10px;
             top: 25%;
             height: 50%;
             width: 1px;
@@ -289,7 +305,7 @@
         .info-item-value {
             font-weight: 700;
             font-size: 18px;
-            word-break: break-word; /* Changed back from break-all */
+            word-break: break-word;
         }
 
         .price-value {
@@ -360,8 +376,6 @@
             color: var(--dark);
             font-size: 18px;
         }
-
-        /* Companies Logos Section - Removed as requested */
 
         .organizer-box {
             background-color: var(--light-bg);
@@ -525,8 +539,21 @@
             font-size: 28px;
             top: -8px;
         }
-        
-        /* Tools Section - Removed as requested */
+
+        /* NEW tag for updated content items */
+        .new-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, #7c3aed, #2563eb);
+            color: white;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-left: 6px;
+            letter-spacing: 0.5px;
+            vertical-align: middle;
+            text-transform: uppercase;
+        }
 
         /* Target Audience */
         .audience {
@@ -553,7 +580,7 @@
             transform: translateY(-5px);
         }
 
-        .audience-icon { /* Reusing audience-icon style from benefits */
+        .audience-icon {
             width: 90px;
             height: 90px;
             background-color: var(--primary-light);
@@ -564,12 +591,12 @@
             margin-bottom: 24px;
         }
 
-        .audience-icon i { /* Reusing audience-icon style from benefits */
+        .audience-icon i {
             font-size: 42px;
             color: var(--primary);
         }
 
-        .audience-card i { /* Reusing audience-icon style from benefits */
+        .audience-card i {
             background-color: transparent;
             width: auto;
             height: auto;
@@ -598,12 +625,12 @@
             position: relative;
             max-width: 1000px;
             margin: 50px auto 0;
-            display: flex; /* Center the single testimonial */
-            justify-content: center; /* Center the single testimonial */
+            display: flex;
+            justify-content: center;
         }
         
-        .testimonials-grid { /* Adjusted for single testimonial */
-           max-width: 400px; /* Limit width for single card */
+        .testimonials-grid {
+           max-width: 400px;
         }
         
         .testimonial-card {
@@ -649,11 +676,9 @@
             font-size: 54px;
         }
 
-        /* Removed testimonials pagination, groups, nav */
-
         /* Benefits */
         .benefits {
-            padding: 80px 0 80px; /* Reducido padding-top de 100px a 80px */
+            padding: 80px 0 80px;
             background-color: var(--light-bg);
         }
         
@@ -707,7 +732,7 @@
         
         /* Pricing */
         .pricing-section {
-            padding: 40px 0 80px; /* Aumentado padding-bottom de 40px a 80px */
+            padding: 40px 0 80px;
             text-align: center;
         }
         
@@ -766,12 +791,12 @@
             align-items: flex-start;
             margin-bottom: 20px;
             font-size: 17px;
-            gap: 16px; /* Added gap for alignment */
+            gap: 16px;
         }
         
         .pricing-feature i {
             color: var(--success);
-            margin-right: 0; /* Removed margin-right */
+            margin-right: 0;
             font-size: 20px;
             flex-shrink: 0;
             margin-top: 3px;
@@ -821,54 +846,50 @@
         }
         
         .pricing-info {
-            margin: 24px 0;         /* Espaciado arriba y abajo */
+            margin: 24px 0;
             display: flex;
-            flex-direction: column; /* ¡ESTA LÍNEA ES CLAVE! Apila los hijos verticalmente */
-            align-items: center;    /* Centra los hijos horizontalmente */
-            gap: 12px;              /* Espacio vertical entre las líneas */
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
         }
         .pricing-info-item {
-            display: flex;        /* <<< ¡ESTA ES LA CLAVE PARA LA ALINEACIÓN HORIZONTAL! */
-            align-items: center;  /* Centra verticalmente la etiqueta y el precio */
-            justify-content: center; /* Centra horizontalmente el conjunto (opcional, ajusta si prefieres alineado a la izquierda) */
-            gap: 10px;           /* Espacio entre la etiqueta y el precio */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
             width: 100%;
-            max-width: 400px;    /* Ajusta este ancho si es necesario */
-            margin-bottom: 5px; /* Pequeño espacio entre líneas de precio */
+            max-width: 400px;
+            margin-bottom: 5px;
         }
-        /* Estilo para las etiquetas "Precio regular:", "Tarifa preferencial:" */
         .pricing-label {
             font-size: 18px;
             font-weight: 600;
-            color: var(--dark); /* Color oscuro por defecto */
-            text-align: right; /* Alinea etiquetas a la derecha si prefieres */
-            flex-basis: 180px; /* Opcional: Ancho fijo para etiquetas, ajusta según necesites */
+            color: var(--dark);
+            text-align: right;
+            flex-basis: 180px;
             flex-shrink: 0;
         }
         
-        /* Estilo para el VALOR del precio regular */
         .pricing-value-regular {
             font-size: 20px;
             font-weight: 700;
-            text-decoration: line-through; /* <<< ESTO APLICA EL TACHADO */
-            color: #aaa;                  /* Color gris para el precio tachado */
-            text-align: left; /* Alinea el valor a la izquierda */
+            text-decoration: line-through;
+            color: #aaa;
+            text-align: left;
         }
         
-        /* Estilo para el VALOR de la tarifa preferencial */
         .pricing-value-special {
-            font-size: 26px;           /* <<< HACE EL TEXTO MÁS GRANDE */
+            font-size: 26px;
             font-weight: 800;
-            color: var(--primary);     /* <<< APLICA EL COLOR AZUL */
-            text-align: left; /* Alinea el valor a la izquierda */
+            color: var(--primary);
+            text-align: left;
         }
         
-        /* Estilo para la nota de las cuotas */
         .pricing-note {
             font-size: 16px;
-            margin-top: 8px;           /* Espacio sobre la nota */
+            margin-top: 8px;
             font-weight: 500;
-            color: var(--primary);     /* Color azul para la nota */
+            color: var(--primary);
             text-align: center;
         }
         .guarantee-icon {
@@ -883,18 +904,17 @@
         }
         
         .instructor-content {
-            display: grid; /* Changed to grid */
-            grid-template-columns: 1fr 1fr; /* Two equal columns */
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 60px;
-            align-items: flex-start; /* Align items to the top */
+            align-items: flex-start;
             margin-top: 50px;
         }
         
         .instructor-image-container {
-           /* flex: 1; - Removed */
-            min-width: 200px; /* Adjusted min-width */
+            min-width: 200px;
             max-width: 400px;
-            margin: 0 auto; /* Center image within its column */
+            margin: 0 auto;
         }
         
         .instructor-image {
@@ -909,20 +929,17 @@
         }
         
         .instructor-info {
-           /* flex: 2; - Removed */
-           /* min-width: 300px; - Removed */
-           /* Added margin-bottom for spacing between instructors */
            margin-bottom: 40px;
         }
 
         .instructor-info:last-child {
-             margin-bottom: 0; /* Remove margin for the last instructor */
+             margin-bottom: 0;
         }
 
         .instructor-info h3 {
-            font-size: 28px; /* Adjusted size */
+            font-size: 28px;
             font-weight: 700;
-            margin-bottom: 12px; /* Adjusted margin */
+            margin-bottom: 12px;
             color: var(--dark);
         }
         
@@ -930,26 +947,26 @@
             font-size: 20px;
             font-weight: 500;
             color: var(--gray);
-            margin-bottom: 20px; /* Adjusted margin */
+            margin-bottom: 20px;
             line-height: 1.4;
         }
         
         .instructor-info p {
-            margin-bottom: 20px; /* Adjusted margin */
-            font-size: 16px; /* Adjusted size */
+            margin-bottom: 20px;
+            font-size: 16px;
             line-height: 1.7;
         }
         
         .instructor-info ul {
             list-style-type: none;
-            padding-left: 0; /* Removed default padding */
+            padding-left: 0;
         }
         
         .instructor-info li {
-            margin-bottom: 12px; /* Adjusted margin */
+            margin-bottom: 12px;
             position: relative;
-            padding-left: 28px; /* Adjusted padding */
-            font-size: 15px; /* Adjusted size */
+            padding-left: 28px;
+            font-size: 15px;
         }
         
         .instructor-info li:before {
@@ -957,7 +974,7 @@
             color: var(--success);
             position: absolute;
             left: 0;
-            font-size: 16px; /* Adjusted size */
+            font-size: 16px;
         }
         
         /* CTA */
@@ -1135,7 +1152,7 @@
         
         .footer-col ul {
             list-style-type: none;
-            padding-left: 0; /* Remove default padding */
+            padding-left: 0;
         }
         
         .footer-col ul li {
@@ -1163,23 +1180,23 @@
             width: 44px;
             height: 44px;
             border-radius: 50%;
-            background-color: rgba(255,255,255,0.3); /* Semi-transparent white */
+            background-color: rgba(255,255,255,0.3);
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s;
             font-size: 18px;
-            color: white !important; /* Force white icon color */
-            text-decoration: none; /* Ensure no underline */
+            color: white !important;
+            text-decoration: none;
         }
         
         .social-link:hover {
-            background-color: rgba(255,255,255,0.5); /* Lighter on hover */
+            background-color: rgba(255,255,255,0.5);
             transform: translateY(-3px);
         }
 
         .social-link i {
-             color: white !important; /* Force white icon color */
+             color: white !important;
         }
         
         .footer-bottom {
@@ -1206,18 +1223,18 @@
             }
 
             .instructor-content {
-                 grid-template-columns: 1fr; /* Stack instructors on smaller screens */
+                 grid-template-columns: 1fr;
                  text-align: center;
             }
 
              .instructor-info {
-                 text-align: center; /* Center text for stacked instructors */
+                 text-align: center;
              }
 
              .instructor-info li {
-                 text-align: left; /* Keep list items left-aligned */
-                 display: inline-block; /* Adjust list display if needed */
-                 width: 100%; /* Ensure list items take full width */
+                 text-align: left;
+                 display: inline-block;
+                 width: 100%;
              }
 
             .key-info {
@@ -1251,7 +1268,7 @@
              }
             
              .key-info {
-                 grid-template-columns: repeat(2, 1fr); /* Adjusted from flex-direction column */
+                 grid-template-columns: repeat(2, 1fr);
                  gap: 16px;
                  padding: 24px;
              }
@@ -1286,7 +1303,7 @@
                  margin: 40px 16px 0;
              }
              .instructor-content {
-                gap: 30px; /* Reduce gap for smaller screens */
+                gap: 30px;
             }
         }
         
@@ -1313,7 +1330,6 @@
             
             .hero h1 {
                 font-size: 28px;
-
             }
             
             .hero-subtitle {
@@ -1374,10 +1390,10 @@
                 font-size: 16px;
             }
             .key-info {
-                grid-template-columns: 1fr; /* Stack items vertically */
+                grid-template-columns: 1fr;
             }
             .info-item:not(:last-child):after {
-                 display: none; /* Hide dividers when stacked */
+                 display: none;
              }
         }
         
@@ -1401,13 +1417,13 @@
                 display: flex;
                 flex-direction: column;
                 position: absolute;
-                top: 74px; /* Adjusted top position */
+                top: 74px;
                 left: 0;
                 right: 0;
                 background-color: white;
                 box-shadow: 0 8px 16px rgba(0,0,0,0.1);
                 padding: 24px;
-                z-index: 99; /* Lower z-index than header */
+                z-index: 99;
                 animation: slideDown 0.3s ease;
             }
             
@@ -1432,7 +1448,6 @@
             }
         }
         
-        /* Removed Audio Testimonials Styling */
          .professions-banner {
              margin: 25px auto 30px;
              max-width: 900px;
@@ -1482,9 +1497,9 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-tag">Taller 100% práctico | No te Quedes Atrás</div>
+                <div class="hero-tag">Taller 100% práctico | Edición Actualizada 2026 <span class="updated-badge">NUEVO</span></div>
                 <h1>Taller de Inteligencia Artificial Aplicada al Derecho Privado</h1>
-                <p class="hero-subtitle">Domina la Inteligencia Artificial y <strong>avanza en tu Carrera Jurídica</strong>. Transforma tu práctica Legal con herramientas que redefinen el Derecho Privado. <strong>Revoluciona la manera en que generas contratos, informes y comunicaciones legales</strong>.</p><p> <span class="no-experience">¡Sin conocimientos previos!</span> </p>
+                <p class="hero-subtitle">Domina la Inteligencia Artificial y <strong>avanza en tu Carrera Jurídica</strong>. Transforma tu práctica Legal con herramientas que redefinen el Derecho Privado. <strong>Revoluciona la manera en que generas contratos, informes y comunicaciones legales</strong>. Ahora con <strong>IA agéntica, bases de conocimiento propias y las últimas capacidades de los modelos de lenguaje</strong>.</p><p> <span class="no-experience">¡Sin conocimientos previos!</span> </p>
 
                 <div class="professions-banner">
                      <p>Este taller está diseñado específicamente para <span class="profession">abogados visionarios</span> que buscan optimizar su práctica profesional, reducir tiempos operativos y destacar en un mercado competitivo.</p>
@@ -1583,18 +1598,18 @@
 
                  <div class="benefit-card">
                       <div class="benefit-icon">
-                           <i class="fas fa-cogs"></i>
+                           <i class="fas fa-database"></i>
                       </div>
-                     <h3 class="benefit-title">Integración Estratégica</h3>
-                     <p class="benefit-description">Integra IA en tu práctica legal, aumentando tu productividad, reduciendo errores y mejorando la experiencia del cliente.</p>
+                     <h3 class="benefit-title">Tu Base de Conocimiento Legal <span class="new-tag">NUEVO</span></h3>
+                     <p class="benefit-description">Crea bases de conocimiento propias con herramientas como NotebookLM: sube tus contratos, jurisprudencia y documentos para que la IA trabaje exclusivamente con tu información.</p>
                  </div>
 
                  <div class="benefit-card">
                      <div class="benefit-icon">
                           <i class="fas fa-lightbulb"></i>
                      </div>
-                    <h3 class="benefit-title">Ingeniería de Prompts</h3>
-                    <p class="benefit-description">Domina el arte de crear instrucciones claras y efectivas para obtener resultados óptimos y desarrolla plantillas reutilizables.</p>
+                    <h3 class="benefit-title">Más allá del Prompt: Contexto + Instrucciones</h3>
+                    <p class="benefit-description">Domina no solo los prompts, sino el arte de dar contexto completo a la IA: instrucciones del sistema, documentos de referencia y plantillas reutilizables para resultados superiores.</p>
                 </div>
 
                  <div class="benefit-card">
@@ -1611,7 +1626,7 @@
     <section id="curriculum" class="curriculum">
         <div class="container">
             <h2 class="section-title">Temario</h2>
-            <p class="section-subtitle">Maximiza el uso de la inteligencia artificial en tu práctica jurídica</p>
+            <p class="section-subtitle">Maximiza el uso de la inteligencia artificial en tu práctica jurídica — ahora con lo último en IA agéntica y bases de conocimiento</p>
             
             <div class="tabs-container">
                 <div class="tabs-navigation">
@@ -1629,12 +1644,12 @@
                                     <div class="session-icon">
                                         <i class="fas fa-balance-scale"></i>
                                     </div>
-                                    <div class="session-title">Fundamentos IA y Prompts</div>
+                                    <div class="session-title">Fundamentos IA, Contexto y Prompts</div>
                                 </div>
                                 <div class="session-date">Martes 21 de octubre | 7:00pm a 9:00pm</div>
                             </div>
                             
-                            <div class="session-subtitle">Fundamentos de la IA Jurídica y la Ingeniería de Prompts</div>
+                            <div class="session-subtitle">Fundamentos de la IA Jurídica: Del Prompt al Contexto Completo</div>
                             
                             <div class="session-content">
                                 <div class="content-section">
@@ -1642,7 +1657,8 @@
                                     <ul class="content-list">
                                         <li>Introducción: Modelos de lenguaje (ChatGPT, DeepSeek, Claude, Gemini) y aplicaciones en derecho privado.</li>
                                         <li>Fundamentos de Ingeniería de Prompts: Principios, tipos (directos, condicionales, en cadena).</li>
-                                        <li>Práctica guiada: Creación de primeros prompts jurídicos.</li>
+                                        <li>El poder del contexto: Por qué un buen prompt no basta — cómo dar instrucciones de sistema, rol y documentos de referencia para obtener resultados jurídicos precisos. <span class="new-tag">NUEVO</span></li>
+                                        <li>Práctica guiada: Creación de primeros prompts jurídicos con contexto enriquecido.</li>
                                     </ul>
                                 </div>
                                 <div class="content-section">
@@ -1650,6 +1666,7 @@
                                     <ul class="content-list">
                                         <li>Comprender qué son los modelos de lenguaje y su potencial en el ámbito legal.</li>
                                         <li>Aprender los principios básicos para dar instrucciones efectivas a la IA.</li>
+                                        <li>Entender por qué el contexto (no solo el prompt) es el factor determinante en la calidad de los resultados. <span class="new-tag">NUEVO</span></li>
                                         <li>Empezar a crear prompts para tareas jurídicas simples.</li>
                                     </ul>
                                 </div>
@@ -1699,12 +1716,12 @@
                                     <div class="session-icon">
                                         <i class="fas fa-search-dollar"></i>
                                     </div>
-                                    <div class="session-title">Revisión e Investigación</div>
+                                    <div class="session-title">Revisión, Investigación y Bases de Conocimiento</div>
                                 </div>
                                 <div class="session-date">Martes 4 de noviembre | 7:00pm a 9:00pm</div>
                             </div>
                             
-                            <div class="session-subtitle">Revisión, Informes e Investigación Jurídica Asistida</div>
+                            <div class="session-subtitle">Revisión, Informes e Investigación Jurídica con IA y tu Propia Base de Conocimiento</div>
                             
                             <div class="session-content">
                                 <div class="content-section">
@@ -1712,6 +1729,7 @@
                                     <ul class="content-list">
                                         <li>Elaboración y Revisión de Informes Jurídicos: Borradores, revisión crítica, corrección, ajustes de estilo, control de calidad.</li>
                                         <li>Investigación Jurídica Asistida: Pedir análisis, definiciones, resúmenes; evaluar confiabilidad; citado; integración con fuentes tradicionales.</li>
+                                        <li>IA Documental con NotebookLM: Cómo crear una base de conocimiento propia subiendo tus contratos, jurisprudencia y normativa para que la IA responda solo desde tus documentos, con citas verificables. <span class="new-tag">NUEVO</span></li>
                                     </ul>
                                 </div>
                                 <div class="content-section">
@@ -1719,6 +1737,7 @@
                                      <ul class="content-list">
                                          <li>Utilizar IA para generar y refinar informes legales complejos.</li>
                                          <li>Aprovechar IA para acelerar y complementar la investigación jurídica.</li>
+                                         <li>Crear tu propia base de conocimiento legal con IA documental (NotebookLM) para consultas fiables basadas exclusivamente en tus fuentes. <span class="new-tag">NUEVO</span></li>
                                          <li>Evaluar críticamente la información generada por IA.</li>
                                      </ul>
                                 </div>
@@ -1733,18 +1752,19 @@
                                     <div class="session-icon">
                                         <i class="fas fa-gavel"></i>
                                     </div>
-                                    <div class="session-title">Plantillas Avanzadas y Ética</div>
+                                    <div class="session-title">IA Agéntica, Plantillas Avanzadas y Ética</div>
                                 </div>
                                 <div class="session-date">Martes 11 de noviembre | 7:00pm a 9:00pm</div>
                             </div>
                             
-                            <div class="session-subtitle">Automatización, Plantillas Avanzadas y Ética en la IA Jurídica</div>
+                            <div class="session-subtitle">IA Agéntica, Automatización Avanzada y Ética en la IA Jurídica</div>
                             
                             <div class="session-content">
                                 <div class="content-section">
                                     <h4>Contenido:</h4>
                                     <ul class="content-list">
                                         <li>Acceso a Plantillas Predefinidas: Entrega y personalización para áreas (civil, societario, inmobiliario).</li>
+                                        <li>Introducción a la IA Agéntica: Qué son los agentes de IA, cómo pueden automatizar flujos de trabajo legales completos (revisión → análisis → redacción) y qué viene en el futuro cercano. <span class="new-tag">NUEVO</span></li>
                                         <li>Aspectos Éticos y Limitaciones: Sesgos, errores, confiabilidad, confidencialidad, responsabilidad profesional.</li>
                                         <li>Marco legal en Perú y tendencias internacionales.</li>
                                     </ul>
@@ -1753,6 +1773,7 @@
                                      <h4>Objetivo:</h4>
                                      <ul class="content-list">
                                          <li>Utilizar plantillas avanzadas para tareas legales específicas.</li>
+                                         <li>Comprender el concepto de IA agéntica y su impacto en la automatización de procesos legales. <span class="new-tag">NUEVO</span></li>
                                          <li>Comprender las implicaciones éticas y las limitaciones de la IA en el derecho.</li>
                                          <li>Conocer el panorama regulatorio actual y futuro.</li>
                                      </ul>
@@ -1795,7 +1816,7 @@
                         <i class="fas fa-laptop-code"></i>
                     </div>
                     <h3>Visionarios Tecnológicos del Sector Legal</h3>
-                    <p>Que quieren estar a la vanguardia, aprendiendo a usar modelos de lenguaje avanzados y plantillas para revolucionar su trabajo diario.</p>
+                    <p>Que quieren estar a la vanguardia, aprendiendo a usar modelos de lenguaje avanzados, agentes de IA y bases de conocimiento propias para revolucionar su trabajo diario.</p>
                 </div>
             </div>
         </div>
@@ -1841,6 +1862,12 @@
                                  <strong>Soporte personalizado:</strong> Durante todo el taller, cualquier duda que tengas recibirás guía y soporte.
                               </div>
                           </li>
+                          <li class="pricing-feature">
+                              <i class="fas fa-database"></i>
+                              <div>
+                                 <strong>Contenido actualizado 2026:</strong> Incluye IA agéntica, bases de conocimiento propias (NotebookLM) y las últimas capacidades de los modelos de lenguaje.
+                              </div>
+                          </li>
                     </ul>
                     
                     <div class="pricing-info">  <div class="pricing-info-item">
@@ -1882,7 +1909,8 @@
                        </div>
                     <h3>Joe Navarrete</h3> 
                     <h4>Abogado (UNMSM), Magíster en Finanzas y Derecho Corporativo (ESAN)</h4> 
-                    <p>Estudios concluidos en la Maestría de Filosofía con mención en Ética y Política (UARM). Asociado Senior en Santiváñez Abogados. Trayectoria destacada como Gerente Legal y Asociado Senior en reconocidas firmas legales y grupos empresariales.</p>
+                    <p>Estudios concluidos en la Maestría de Filosofía con mención en Ética y Política (UARM). Socio en Lau-Tám Abogados. Ha sido Asociado Senior en Payet, Rey, Cauvi, Pérez, Santiváñez Abogados y Martinot Abogados, así como Gerente Legal en Conexa Financial Group. 
+Profesor de Empresa y Nuevas Tecnologías en el Programa de Segunda Especialidad de la Pontificia Universidad Católica del Perú.</p>
                     <ul>
                         <li>Más de 15 años de experiencia asesorando en derecho corporativo, financiero y societario.</li>
                         <li>Ha ocupado cargos de liderazgo en firmas como Martinot Abogados, Payet, Rey, Cauvi, Pérez y empresas como Conexa Financial Group.</li>
@@ -1917,8 +1945,8 @@
         <div class="container">
             <div class="cta-content">
                 <h2>¡No te Quedes Atrás! Avanza en tu Carrera Jurídica</h2>
-                <p>En un mundo donde la tecnología avanza a pasos agigantados, el sector legal no puede quedarse rezagado. Este taller te brindará las herramientas para integrar modelos de lenguaje avanzados en tu día a día.</p>
-                <p>Únete al "Taller de Inteligencia Artificial Aplicada al Derecho Privado" y lleva tu carrera al siguiente nivel. No pierdas la oportunidad de convertirte en un abogado del futuro, hoy mismo.</p> 
+                <p>La IA evoluciona cada semana. Lo que funcionaba hace meses ya quedó corto. Hoy los abogados más competitivos no solo usan prompts: crean bases de conocimiento propias, aprovechan el contexto para obtener resultados precisos y entienden cómo los agentes de IA están transformando los flujos de trabajo legales.</p>
+                <p>Únete al "Taller de Inteligencia Artificial Aplicada al Derecho Privado" — ahora actualizado con lo último en IA — y lleva tu carrera al siguiente nivel.</p> 
                 <a href="#pricing" class="cta-white-button">¡Inscríbete ahora y Transforma tu Práctica Legal!</a> 
             </div>
         </div>
@@ -1991,6 +2019,13 @@
                               <p>No necesitas un equipo especial. Las herramientas que usaremos funcionan bien en cualquier computadora o dispositivo estándar que ya tengas.</p>
                          </div>
                      </div>
+
+                     <div class="faq-question">
+                         <h4>Ya llevé la versión anterior del taller. ¿Qué hay de nuevo? <i class="fas fa-chevron-down"></i></h4>
+                         <div class="faq-answer">
+                              <p>Esta edición incorpora tres actualizaciones clave: (1) la <strong>importancia del contexto</strong> más allá del prompt — cómo dar instrucciones de sistema y documentos de referencia para resultados muy superiores; (2) <strong>IA documental con NotebookLM</strong>, para crear tu propia base de conocimiento legal con citas verificables; y (3) una <strong>introducción a la IA agéntica</strong>, los agentes que pueden automatizar flujos completos de trabajo legal. Todo lo demás se mantiene y se refuerza.</p>
+                         </div>
+                     </div>
                 </div>
                 
                 <div class="faq-category">
@@ -2013,7 +2048,7 @@
                      <div class="faq-question">
                          <h4>¿Qué herramientas específicas de IA aprenderé a usar? <i class="fas fa-chevron-down"></i></h4>
                          <div class="faq-answer">
-                              <p>Nos enfocaremos en modelos de lenguaje líderes como ChatGPT, DeepSeek, Claude y Gemini, aplicándolos a tareas legales concretas como redacción y revisión de contratos, generación de informes y análisis legales.</p>
+                              <p>Nos enfocaremos en modelos de lenguaje líderes como ChatGPT, DeepSeek, Claude y Gemini, aplicándolos a tareas legales concretas. Además, trabajaremos con <strong>NotebookLM</strong> para crear bases de conocimiento propias con tus documentos, y exploraremos cómo las capacidades agénticas de estas herramientas están transformando los flujos de trabajo legales.</p>
                          </div>
                      </div>
 
@@ -2089,7 +2124,6 @@
         
         mobileMenuToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-            // Toggle icon between bars and times (optional)
              const icon = mobileMenuToggle.querySelector('i');
              if (navLinks.classList.contains('active')) {
                  icon.classList.remove('fa-bars');
@@ -2100,7 +2134,6 @@
              }
         });
 
-         // Close mobile menu when a link is clicked
          document.querySelectorAll('.nav-links a').forEach(link => {
              link.addEventListener('click', () => {
                  if (navLinks.classList.contains('active')) {
@@ -2111,17 +2144,14 @@
              });
          });
         
-        // Tab functionality for curriculum section
+        // Tab functionality
         const tabButtons = document.querySelectorAll('.tab-button');
         const tabPanes = document.querySelectorAll('.tab-pane');
         
         tabButtons.forEach(button => {
             button.addEventListener('click', () => {
-                // Remove active class from all buttons and panes
                 tabButtons.forEach(btn => btn.classList.remove('active'));
                 tabPanes.forEach(pane => pane.classList.remove('active'));
-                
-                // Add active class to clicked button and corresponding pane
                 button.classList.add('active');
                 const tabId = button.getAttribute('data-tab');
                 document.getElementById(tabId).classList.add('active');
@@ -2133,7 +2163,6 @@
         
         faqQuestions.forEach(question => {
             question.addEventListener('click', () => {
-                 // Close other open questions in the same category (optional)
                 const category = question.closest('.faq-category');
                 if (category) {
                     category.querySelectorAll('.faq-question.active').forEach(openQuestion => {
@@ -2142,30 +2171,18 @@
                         }
                     });
                 }
-                // Toggle the clicked question
                 question.classList.toggle('active');
             });
         });
-        
-        // Testimonials pagination (Removed - not needed)
 
-        // Smooth scrolling for anchor links
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                
                 const targetId = this.getAttribute('href');
-                
-                // Si el enlace es solo "#", no hacer nada
                 if (targetId === '#') return;
-                
-                // Si el enlace es "#top", desplazarse al inicio de la página
                 if (targetId === '#top') {
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
-                     // Close mobile menu if open
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                      if (navLinks.classList.contains('active')) {
                         navLinks.classList.remove('active');
                         mobileMenuToggle.querySelector('i').classList.remove('fa-times');
@@ -2173,16 +2190,13 @@
                      }
                     return;
                 }
-                
-                // Para otros enlaces con "#", desplazarse al elemento correspondiente
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
-                     const headerOffset = document.querySelector('header').offsetHeight || 80; // Get header height or use default
+                     const headerOffset = document.querySelector('header').offsetHeight || 80;
                     window.scrollTo({
-                        top: targetElement.offsetTop - headerOffset, // Adjust for sticky header
+                        top: targetElement.offsetTop - headerOffset,
                         behavior: 'smooth'
                     });
-                    // Close mobile menu if open
                      if (navLinks.classList.contains('active')) {
                         navLinks.classList.remove('active');
                         mobileMenuToggle.querySelector('i').classList.remove('fa-times');
@@ -2191,8 +2205,6 @@
                 }
             });
         });
-
-        // Removed Audio Control Logic
     </script>
     <a href="https://wa.link/br9elm" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
